@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Scoreboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: inline-block;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h2>Live Scoreboard</h2>
+    <ul id="scoreboard"></ul>
+
+    <!-- ✅ Ensure this is loaded as a module -->
+    <script type="module" src="scoreboard.js"></script>
+</body>
+</html>
