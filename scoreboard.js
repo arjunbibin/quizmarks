@@ -17,12 +17,27 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const scoresRef = ref(database, "quiz_scores");
 
-// ✅ Update Scoreboard in Real-Time (Sorted)
+// ✅ Update Scoreboard in Real-Time
 onValue(scoresRef, (snapshot) => {
     const scoreboard = document.getElementById("scoreboard");
     scoreboard.innerHTML = ""; // Clear previous entries
 
-    const teams = [];
+    let scoresArray = [];
+
     snapshot.forEach((childSnapshot) => {
         const team = childSnapshot.val();
-        if (team && team.
+        if (team && team.name && team.score !== undefined) {
+            scoresArray.push(team);
+        }
+    });
+
+    // ✅ Sort scores in descending order (highest first)
+    scoresArray.sort((a, b) => b.score - a.score);
+
+    // ✅ Display sorted scores
+    scoresArray.forEach((team) => {
+        const listItem = document.createElement("li");
+        listItem.innerHTML = `🏆 <strong>${team.name}</strong>: ${team.score} points`;
+        scoreboard.appendChild(listItem);
+    });
+});
